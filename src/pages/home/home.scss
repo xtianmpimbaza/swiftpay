@@ -1,13 +1,22 @@
 page-home {
   ion-content{
     padding: 0px !important;
+    background-color: #d7d7d7;
+
     ion-icon {
       font-size: 40px;
       color: #003471;
-      //color: #cc050f;
+    }
+    .icon_title{
+      margin-top: -20px !important;
+      color: #fff;
     }
     .no-margin {
       padding: 0px !important;
+    }
+
+    card_click:hover {
+      background-color: slategray;
     }
 
     .no-padding {
@@ -42,9 +51,7 @@ page-home {
       font-family: "Segoe UI", "Noto Sans", sans-serif;
       font-weight: bold;
     }
-    //ion-icon {
-    //  font-size: 13px;
-    //}
+
     .header_ion{
       text-align: center;
     }

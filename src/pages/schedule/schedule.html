@@ -25,7 +25,6 @@
 
 
   <div *ngIf="viewMode==='first'" style="width:100%;height:100%;">
-
     <ion-list >
       <button ion-item text-wrap *ngFor="let dayone of firstSchedule" (click)="openDetails(dayone)">
         <h2>{{dayone.time}}</h2>

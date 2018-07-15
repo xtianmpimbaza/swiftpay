@@ -1,14 +1,14 @@
 webpackJsonp([1],{
 
-/***/ 355:
+/***/ 357:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__code_pay__ = __webpack_require__(359);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CodePayPageModule", function() { return CodePayPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modal__ = __webpack_require__(361);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModalPageModule", function() { return ModalPageModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,36 +18,39 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CodePayPageModule = (function () {
-    function CodePayPageModule() {
+var ModalPageModule = (function () {
+    function ModalPageModule() {
     }
-    return CodePayPageModule;
+    return ModalPageModule;
 }());
-CodePayPageModule = __decorate([
+ModalPageModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__code_pay__["a" /* CodePayPage */],
+            __WEBPACK_IMPORTED_MODULE_2__modal__["a" /* ModalPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__code_pay__["a" /* CodePayPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__modal__["a" /* ModalPage */]),
         ],
         exports: [
-            __WEBPACK_IMPORTED_MODULE_2__code_pay__["a" /* CodePayPage */]
+            __WEBPACK_IMPORTED_MODULE_2__modal__["a" /* ModalPage */]
         ]
     })
-], CodePayPageModule);
+], ModalPageModule);
 
-//# sourceMappingURL=code-pay.module.js.map
+//# sourceMappingURL=modal.module.js.map
 
 /***/ }),
 
-/***/ 359:
+/***/ 361:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(5);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CodePayPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_email_composer__ = __webpack_require__(117);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModalPage; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59,42 +62,127 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-/**
- * Generated class for the CodePayPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-var CodePayPage = (function () {
-    function CodePayPage(navCtrl, navParams) {
+
+// import {Validators, FormBuilder, FormGroup} from "@angular/forms";
+// import {GlobalVars} from "../../providers/global-vars";
+
+
+var ModalPage = (function () {
+    function ModalPage(navCtrl, navParams, viewCtrl, emailComposer, element, http, loadingCtrl, formBuilder) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        //-----------------------
-        this.pay = {};
-        this.submitted = false;
+        this.viewCtrl = viewCtrl;
+        this.emailComposer = emailComposer;
+        this.element = element;
+        this.http = http;
+        this.loadingCtrl = loadingCtrl;
+        this.formBuilder = formBuilder;
+        this.data = {};
+        this.receipient = this.navParams.get('mail_receipiennt');
+        this.credentialsForm = this.formBuilder.group({
+            email_to: this.receipient,
+            // email_from: ['',Validators.compose([Validators.pattern(
+            //   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/), Validators.required])],
+            no_html: ['']
+        });
+        this.data.response = '';
+        // this.ionViewDidLoad();
     }
-    CodePayPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad CodePayPage');
+    ModalPage.prototype.resize = function () {
+        var element = this.myInput['_elementRef'].nativeElement.getElementsByClassName("text-input")[0];
+        var scrollHeight = element.scrollHeight;
+        element.style.height = scrollHeight + 'px';
+        this.myInput['_elementRef'].nativeElement.style.height = (scrollHeight + 16) + 'px';
     };
-    CodePayPage.prototype.onPay = function () {
-        this.submitted = true;
-        // if (form.valid) {
-        // this.userData.login(this.login.username);
-        // this.navCtrl.push(TabsPage);
-        return 'tel:*130*' + this.pay.amount + '#';
-        // }
+    ModalPage.prototype.ngOnInit = function () {
+        // setTimeout(() => this.adjust(), 0);
     };
-    return CodePayPage;
+    //
+    // adjust(): void {
+    //   const textArea = this.myInput['_elementRef'].nativeElement.getElementsByTagName('textarea')[0];
+    //   textArea.style.overflow = 'hidden';
+    //   textArea.style.height = 'auto';
+    //   textArea.style.height = textArea.scrollHeight + 'px';
+    // }
+    ModalPage.prototype.sendContact = function () {
+        console.log('Form submit');
+    };
+    ModalPage.prototype.closeModal = function () {
+        this.viewCtrl.dismiss();
+    };
+    ModalPage.prototype.send = function () {
+        // console.log(this.credentialsForm.value);
+        this.emailComposer.isAvailable().then(function (available) {
+            if (available) {
+                //Now we know we can send
+                console.log("mail available");
+            }
+        });
+        var email = {
+            app: 'gmail',
+            to: this.credentialsForm.value.email_to,
+            subject: 'P2P from Africa Blockchain',
+            body: this.credentialsForm.value.no_html,
+            isHtml: true
+        };
+        // this.emailComposer.addAlias('gmail', 'com.google.android.gm');
+        //
+        // // then use alias when sending email
+        //     this.emailComposer.open({
+        //       app: 'gmail',
+        //       ...
+        //     });
+        // Send a text message using default options
+        this.emailComposer.open(email);
+        // let loader = this.loadingCtrl.create({
+        //   content: "Sending....."
+        // });
+        // loader.present();
+        //
+        // new Promise(resolve => {
+        //   this.http.post(this.global.api_url, this.credentialsForm.value)
+        //     .map(res => res.json())
+        //     .subscribe((result) => {
+        //         console.log(result);
+        //
+        //         if (result.feedback =='success') {
+        //           this.global.toast("Email sent.", 'toast-error');
+        //           loader.dismiss();
+        //           this.closeModal();
+        //         } else {
+        //             this.global.toast("Error occurred, Email not sent", 'toast-error');
+        //             loader.dismiss();
+        //         }
+        //       },
+        //       (err) => {
+        //         this.global.toast("Error occurred, Check your internet connection", 'toast-error');
+        //         loader.dismiss();
+        //       });
+        // });
+        this.closeModal();
+    };
+    return ModalPage;
 }());
-CodePayPage = __decorate([
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* ViewChild */])('myInput'),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["s" /* ElementRef */])
+], ModalPage.prototype, "myInput", void 0);
+ModalPage = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["K" /* Component */])({
-        selector: 'page-code-pay',template:/*ion-inline-start:"E:\ionic\autopay\src\pages\code-pay\code-pay.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Pay by merchant</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <form #payForm="ngForm" novalidate>\n    <ion-list no-lines>\n      <ion-item>\n        <ion-label stacked color="dark">Merchant code</ion-label>\n        <ion-input [(ngModel)]="pay.merchant" name="merchant" type="number" #merchant="ngModel" spellcheck="false" autocapitalize="off" required>\n        </ion-input>\n      </ion-item>\n      <p [hidden]="merchant.valid || submitted == false" color="danger" padding-left>\n        Merchant code is required\n      </p>\n\n      <ion-item>\n        <ion-label stacked color="dark">Amount (UGX)</ion-label>\n        <ion-input [(ngModel)]="pay.amount" name="amount" type="number" #amount="ngModel" required>\n        </ion-input>\n      </ion-item>\n      <p [hidden]="amount.valid || submitted == false" color="danger" padding-left>\n        Password is required\n      </p>\n    </ion-list>\n\n    <ion-row responsive-sm>\n      <ion-col>\n        <!--<button ion-button (click)="onPay(payForm)" type="submit" block>Login</button>-->\n        <div class="pull-right"><a href="{{onPay()}}"> Pay <i class="ios-arrow-dropright-circle-outline"></i> </a></div>\n        <!--<button (click)="callIT(\'1-23#456\')">call function</button>-->\n      </ion-col>\n      <!--<ion-col>-->\n        <!--<button ion-button (click)="onSignup()" color="light" block>Signup</button>-->\n      <!--</ion-col>-->\n    </ion-row>\n  </form>\n</ion-content>\n'/*ion-inline-end:"E:\ionic\autopay\src\pages\code-pay\code-pay.html"*/,
+        selector: 'page-modal',template:/*ion-inline-start:"E:\ionic\autopay\src\pages\modal\modal.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Send Email</ion-title>\n    <ion-buttons end>\n      <!--<button ion-button (click)="send()">Send</button>-->\n      <button ion-button (click)="closeModal()">Close</button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <form [formGroup]="credentialsForm">\n    <ion-list>\n\n      <!--<div>-->\n      <!--<ion-label stacked>Youy mail</ion-label>-->\n      <!--<ion-input style="border-bottom: thin solid gray" type="text"-->\n      <!--[formControl]="credentialsForm.controls[\'email_from\']"></ion-input>-->\n      <!--</div>-->\n\n      <!--<div>-->\n      <!--<ion-label stacked>Message</ion-label>-->\n      <!--<ion-textarea class="textarea" name="description"-->\n      <!--[formControl]="credentialsForm.controls[\'no_html\']"></ion-textarea>-->\n      <!--</div>-->\n\n      <!--<ion-item>-->\n      <!--&lt;!&ndash; Use rows="1" to initialize it as a single line text-area &ndash;&gt;-->\n      <!--<ion-textarea rows="1" name="dummyText" [(ngModel)]="dummyText" autosize></ion-textarea>-->\n      <!--</ion-item>-->\n\n      <ion-list>\n        <ion-item>\n          <ion-label floating>Email message</ion-label>\n          <ion-textarea name="description" row="1" #myInput id="myInput" rows="1" maxLength="500" (keyup)="resize()"\n                        [formControl]="credentialsForm.controls[\'no_html\']"></ion-textarea>\n        </ion-item>\n\n        <button ion-button block (click)="send()">Send email</button>\n      </ion-list>\n\n\n      <!--<div>-->\n      <!--&lt;!&ndash;<ion-buttons stacked (click)="send()">Submit</ion-buttons>&ndash;&gt;-->\n      <!--<button ion-button style="background-color: #007aff" (click)="send()" [disabled]="!credentialsForm.valid">-->\n      <!--Submit-->\n      <!--</button>-->\n      <!--</div>-->\n\n    </ion-list>\n  </form>\n</ion-content>\n'/*ion-inline-end:"E:\ionic\autopay\src\pages\modal\modal.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
-], CodePayPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ViewController */],
+        __WEBPACK_IMPORTED_MODULE_4__ionic_native_email_composer__["a" /* EmailComposer */],
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["s" /* ElementRef */],
+        __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* Http */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* LoadingController */],
+        __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* FormBuilder */]])
+], ModalPage);
 
-//# sourceMappingURL=code-pay.js.map
+//# sourceMappingURL=modal.js.map
 
 /***/ })
 

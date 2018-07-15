@@ -5,125 +5,109 @@
       <!--<ion-icon name="menu"></ion-icon>-->
     <!--</button>-->
     <!--<ion-icon name="ios-home"></ion-icon>-->
-    <ion-title>Home</ion-title>
+    <ion-title>Swiftpay</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content>
-  <ion-grid class="no-margin no-padding screen_content">
+  <ion-grid class="no-margin no-padding ">
 
     <ion-grid class="no-margin no-padding">
       <ion-row class="center toplinks">
-        <ion-col>
-          <ion-icon name="ios-home-outline"></ion-icon>
-          <br>
-          Home
-        </ion-col>
-        <ion-col>
-          <ion-icon name="ios-clipboard-outline"></ion-icon>
-          <br>
-          Merchants
-        </ion-col>
-        <ion-col>
-          <ion-icon name="ios-cash-outline"></ion-icon>
-          <br>
-          Promotions
-        </ion-col>
+        <ion-segment [(ngModel)]="viewMode" color="secondary">
+          <ion-segment-button value="home">
+            <ion-col>
+              <ion-icon name="ios-home-outline"></ion-icon>
+              <div class="icon_title">
+                Home
+              </div>
+            </ion-col>
+          </ion-segment-button>
+          <ion-segment-button value="merchants">
+            <ion-col>
+              <ion-icon name="ios-clipboard-outline"></ion-icon>
+              <div class="icon_title" style="color: white;">
+                Merchants
+              </div>
+
+            </ion-col>
+          </ion-segment-button>
+          <ion-segment-button value="promotions">
+            <ion-col>
+              <ion-icon name="ios-cash-outline"></ion-icon>
+              <div class="icon_title">
+                Promotions
+              </div>
+            </ion-col>
+          </ion-segment-button>
+        </ion-segment>
       </ion-row>
     </ion-grid>
+<!--//effect="coverflow"-->
+    <!--style="background-color: #222222;"-->
+    <div *ngIf="viewMode==='home'" style="width:100%;height:100%;">
+      <ion-row class="no-margin no-padding" >
+        <ion-col class="no-margin no-padding">
+          <ion-slides pager options="homeOptions" autoplay="3000" loop="true" speed="7000" >
+            <ion-slide *ngFor="let slide of slideData">
+              <img src="{{slide.image}}" />
+            </ion-slide>
+          </ion-slides>
+        </ion-col>
+      </ion-row>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-card style="margin: 0px; width: 100%;" (click)="goToMyPage('CodePayPage')" class="card_click">
+              <ion-grid>
+                <ion-row style="width: 100%">
+                  <ion-col col-8>
+                    <div class="text_holder">Save codes</div>
+                    <div class="title_holder">Merchant</div>
+                  </ion-col>
+                  <ion-col col-4>
+                    <ion-icon name="ios-bookmarks"></ion-icon>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-col>
+          <ion-col>
+            <ion-card style="margin: 0px; width: 100%;" class="card_click">
+              <ion-grid>
+                <ion-row style="width: 100%">
+                  <ion-col col-8>
+                    <div class="text_holder">Scan to pay</div>
+                    <div class="title_holder">Payments</div>
+                  </ion-col>
+                  <ion-col col-4>
+                    <ion-icon name="ios-camera"></ion-icon>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div *ngIf="viewMode==='merchants'" style="width:100%;height:100%;">
 
-    <ion-row class="no-margin no-padding">
-
-      <ion-col class="no-margin no-padding">
-        <ion-slides pager autoplay="5000" loop="true" speed="3000">
-          <ion-slide >
-            <img src="assets/img/slide1.jpg" alt="">
-          </ion-slide>
-          <ion-slide >
-            <img src="assets/img/slide3.jpg" alt="">
-          </ion-slide>
-
-          <ion-slide >
-            <img src="assets/img/slide4.jpg" alt="">
-          </ion-slide>
-          <ion-slide >
-            <img src="assets/img/slide5.jpg" alt="">
-          </ion-slide>
-        </ion-slides>
-      </ion-col>
-    </ion-row>
-
-    <ion-grid>
       <ion-row>
         <ion-col>
-          <ion-card style="margin: 0px; width: 100%;" (click)="goToMyPage('CodePayPage')">
-            <ion-grid>
-              <ion-row style="width: 100%">
-                <ion-col col-8>
-                  <div class="text_holder">Save codes</div>
-                  <div class="title_holder">Merchant</div>
-                </ion-col>
-                <ion-col col-4>
-                  <ion-icon name="ios-bookmarks"></ion-icon>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-card>
-        </ion-col>
-        <ion-col>
-          <ion-card style="margin: 0px; width: 100%;">
-            <ion-grid>
-              <ion-row style="width: 100%">
-                <ion-col col-8>
-                  <div class="text_holder">Scan to pay</div>
-                  <div class="title_holder">Payments</div>
-                </ion-col>
-                <ion-col col-4>
-                  <ion-icon name="ios-camera"></ion-icon>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-card>
+          <h1>Saved merchants</h1>
+
         </ion-col>
       </ion-row>
-    </ion-grid>
-    <!--<ion-grid>-->
-      <!--<ion-row>-->
-        <!--<ion-col>-->
-          <!--<ion-card style="margin: 0px; width: 100%;">-->
-            <!--<ion-grid>-->
-              <!--<ion-row style="width: 100%">-->
-                <!--<ion-col col-8>-->
-                  <!--<div class="text_holder">Balance</div>-->
-                  <!--<div class="title_holder">*131#</div>-->
-                <!--</ion-col>-->
-                <!--<ion-col col-4>-->
-                  <!--<ion-icon name="ios-card"></ion-icon>-->
-                <!--</ion-col>-->
-              <!--</ion-row>-->
-            <!--</ion-grid>-->
-          <!--</ion-card>-->
-        <!--</ion-col>-->
-        <!--<ion-col>-->
-          <!--<ion-card style="margin: 0px; width: 100%;">-->
-            <!--<ion-grid>-->
-              <!--<ion-row style="width: 100%">-->
-                <!--<ion-col col-8>-->
-                  <!--<div class="text_holder">Load Airtime</div>-->
-                  <!--<div class="title_holder">*130#</div>-->
-                <!--</ion-col>-->
-                <!--<ion-col col-4>-->
-                  <!--<ion-icon name="ios-phone-portrait"></ion-icon>-->
-                <!--</ion-col>-->
-              <!--</ion-row>-->
-            <!--</ion-grid>-->
-          <!--</ion-card>-->
-        <!--</ion-col>-->
+    </div>
+    <div *ngIf="viewMode==='promotions'" style="width:100%;height:100%;">
+      <ion-row>
+        <ion-col>
+          <h2>Promotions</h2>
 
-      <!--</ion-row>-->
-    <!--</ion-grid>-->
-
+        </ion-col>
+      </ion-row>
+    </div>
   </ion-grid>
 
 </ion-content>

@@ -19,6 +19,7 @@
     "@angular/http": "4.0.0",
     "@angular/platform-browser": "4.0.0",
     "@angular/platform-browser-dynamic": "4.0.0",
+    "@ionic-native/call-number": "^4.9.2",
     "@ionic-native/core": "^4.7.0",
     "@ionic-native/email-composer": "^4.7.0",
     "@ionic-native/fcm": "^4.7.0",
@@ -29,7 +30,8 @@
     "@ionic-native/sqlite-porter": "^4.7.0",
     "@ionic-native/status-bar": "3.4.2",
     "@ionic/storage": "2.0.1",
-    "cordova-android": "7.0.0",
+    "call-number": "^1.0.1",
+    "cordova-android": "6.3.0",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-email-composer": "^0.8.15",
     "cordova-plugin-firebase": "^1.0.5",
@@ -42,6 +44,7 @@
     "ionic-angular": "3.0.1",
     "ionicons": "3.0.0",
     "leaflet": "^1.0.3",
+    "mx.ferreyra.callnumber": "~0.0.2",
     "rxjs": "5.1.1",
     "sw-toolbox": "3.4.0",
     "uk.co.workingedge.cordova.plugin.sqliteporter": "^1.0.5",
@@ -79,7 +82,8 @@
       "cordova-plugin-email-composer": {},
       "cordova-sqlite-storage": {},
       "uk.co.workingedge.cordova.plugin.sqliteporter": {},
-      "cordova-plugin-splashscreen": {}
+      "cordova-plugin-splashscreen": {},
+      "mx.ferreyra.callnumber": {}
     },
     "platforms": [
       "android"

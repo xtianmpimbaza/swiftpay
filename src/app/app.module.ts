@@ -35,6 +35,7 @@ import { SpeakersProvider } from '../providers/speakers/speakers';
 import {ScheduleDetailsPageModule} from "../pages/schedule-details/schedule-details.module";
 import {ExhibitorsService} from "../services/exhibitors-service";
 import {BrokerService} from "../providers/broker-service-mock";
+import {CallNumber} from "@ionic-native/call-number";
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import {BrokerService} from "../providers/broker-service-mock";
     GlobalVars,
     SQLitePorter,
     SQLite,
+    CallNumber,
     // FCM,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

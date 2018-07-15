@@ -1,5 +1,8 @@
+///<reference path="../../providers/global-vars.ts"/>
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CallNumber } from '@ionic-native/call-number';
+import {GlobalVars} from "../../providers/global-vars";
 
 /**
  * Generated class for the CodePayPage page.
@@ -13,31 +16,44 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'code-pay.html',
 })
 export class CodePayPage {
+  ussdcode = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private callNumber: CallNumber, public global: GlobalVars,) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CodePayPage');
   }
 
-
-  //-----------------------
   pay: {merchant?: any, amount?: any} = {};
   submitted = false;
 
-
-  onPay() {
-    this.submitted = true;
-
-    // if (form.valid) {
-      // this.userData.login(this.login.username);
-      // this.navCtrl.push(TabsPage);
-      return 'tel:*130*'+this.pay.amount+'#';
-    // }
+  chechBalance() {
+    this.callNumber.callNumber(`*131#`, true);
   }
 
-  // onSignup() {
-  //   this.navCtrl.push(SignupPage);
-  // }
+  executeMerchant() {
+    if (this.isvalid()) {
+      this.ussdcode = `*130*` + this.pay.amount + `#`;
+      // this.ussdcode = `*165*3*`+merchant+`*`+amount+`#`;
+      this.callNumber.callNumber(this.ussdcode, true);
+    }
+  }
+
+  loadAirtime() {
+    if (this.isvalid()) {
+      this.ussdcode = `*130*` + this.pay.amount + `#`;
+      this.callNumber.callNumber(this.ussdcode, true);
+    }
+  }
+
+  isvalid(){
+    if (this.pay.merchant.empty || this.pay.amount.empty) {
+      this.global.toast("Fill empty fields", "red");
+      return false;
+    }else {
+      return true;
+    }
+  }
+
 }

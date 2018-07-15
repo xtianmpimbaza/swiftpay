@@ -17082,7 +17082,7 @@ ion-segment {
   flex: 1;
   padding: 0 6px;
   width: 0;
-  height: 4.2rem;
+  height: 55px;
   border-bottom-width: 2px;
   border-bottom-style: solid;
   border-bottom-color: rgba(0, 0, 0, 0.1);
@@ -24418,6 +24418,7 @@ page-event .justify_p {
 
 page-home ion-content {
   padding: 0px !important;
+  background-color: #d7d7d7;
 }
 
 page-home ion-content ion-icon {
@@ -24425,8 +24426,17 @@ page-home ion-content ion-icon {
   color: #003471;
 }
 
+page-home ion-content .icon_title {
+  margin-top: -20px !important;
+  color: #fff;
+}
+
 page-home ion-content .no-margin {
   padding: 0px !important;
+}
+
+page-home ion-content card_click:hover {
+  background-color: slategray;
 }
 
 page-home ion-content .no-padding {
