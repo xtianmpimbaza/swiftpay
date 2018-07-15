@@ -1,0 +1,55 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Send Email</ion-title>
+    <ion-buttons end>
+      <!--<button ion-button (click)="send()">Send</button>-->
+      <button ion-button (click)="closeModal()">Close</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="credentialsForm">
+    <ion-list>
+
+      <!--<div>-->
+      <!--<ion-label stacked>Youy mail</ion-label>-->
+      <!--<ion-input style="border-bottom: thin solid gray" type="text"-->
+      <!--[formControl]="credentialsForm.controls['email_from']"></ion-input>-->
+      <!--</div>-->
+
+      <!--<div>-->
+      <!--<ion-label stacked>Message</ion-label>-->
+      <!--<ion-textarea class="textarea" name="description"-->
+      <!--[formControl]="credentialsForm.controls['no_html']"></ion-textarea>-->
+      <!--</div>-->
+
+      <!--<ion-item>-->
+      <!--&lt;!&ndash; Use rows="1" to initialize it as a single line text-area &ndash;&gt;-->
+      <!--<ion-textarea rows="1" name="dummyText" [(ngModel)]="dummyText" autosize></ion-textarea>-->
+      <!--</ion-item>-->
+
+      <ion-list>
+        <ion-item>
+          <ion-label floating>Email message</ion-label>
+          <ion-textarea name="description" row="1" #myInput id="myInput" rows="1" maxLength="500" (keyup)="resize()"
+                        [formControl]="credentialsForm.controls['no_html']"></ion-textarea>
+        </ion-item>
+
+        <button ion-button block (click)="send()">Send email</button>
+      </ion-list>
+
+
+      <!--<div>-->
+      <!--&lt;!&ndash;<ion-buttons stacked (click)="send()">Submit</ion-buttons>&ndash;&gt;-->
+      <!--<button ion-button style="background-color: #007aff" (click)="send()" [disabled]="!credentialsForm.valid">-->
+      <!--Submit-->
+      <!--</button>-->
+      <!--</div>-->
+
+    </ion-list>
+  </form>
+</ion-content>

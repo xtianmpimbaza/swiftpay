@@ -1,0 +1,45 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Breakout</ion-title>
+  </ion-navbar>
+
+  <ion-segment [(ngModel)]="viewMode" color="secondary">
+    <ion-segment-button value="first">
+      <!--<ion-icon name="list"></ion-icon>-->
+      23 May 2018
+    </ion-segment-button>
+    <ion-segment-button value="second">
+      <!--<ion-icon name="map"></ion-icon>-->
+      24 May 2018
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+<ion-content class="property-list">
+  <div *ngIf="viewMode==='first'" style="width:100%;height:100%;">
+    <ion-list>
+      <button ion-item text-wrap *ngFor="let dayone of firstSchedule" (click)="openDetails(dayone)">
+        <h2>{{dayone.time}}</h2>
+        <p>{{dayone.venue}}</p>
+      </button>
+
+    </ion-list>
+  </div>
+  <div *ngIf="viewMode==='second'" style="width:100%;height:100%;">
+    <ion-list>
+
+      <button ion-item text-wrap *ngFor="let daytwo of secondSchedule" (click)="openDetails(daytwo)">
+        <h2>{{daytwo.time}}</h2>
+        <p>{{daytwo.venue}}</p>
+      </button>
+    </ion-list>
+  </div>
+
+</ion-content>
+
+<ion-footer padding>
+
+</ion-footer>

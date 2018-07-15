@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Partner</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="attendee.id">
+    <img src="{{attendee.logo}}" style="border: thin solid grey; max-height: 300px;"/>
+    <ion-card-content>
+      <ion-item align-items-center><h1 class="card-title">{{attendee.Name}}</h1></ion-item>
+      <!--<p>{{attendee.Company}}</p>-->
+    </ion-card-content>
+    <ion-list>
+      <ion-item>
+        <ion-icon item-left name="ios-contact"></ion-icon>
+        <h3>Company</h3>
+        <ion-note text-wrap>{{attendee.Company}}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-icon item-left name="ios-globe"></ion-icon>
+        <h3>Position</h3>
+        <ion-note text-wrap>{{attendee.Position}}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-icon item-left name="ios-mail"></ion-icon>
+        <h3>Email</h3>
+        <ion-note text-wrap>{{attendee.Email}}</ion-note>
+      </ion-item>
+
+      <!--<button ion-item (click)="openBrokerDetail(property.broker)">-->
+      <!--<ion-avatar item-left>-->
+      <!--<img src="{{property.broker.picture}}"/>-->
+      <!--</ion-avatar>-->
+      <!--<h2>{{property.broker.name}}</h2>-->
+      <!--<p>{{property.broker.title}}</p>-->
+      <!--</button>-->
+    </ion-list>
+
+    <!--<ion-item>-->
+    <!--<button ion-button icon-left (click)="favorite(property)" clear item-left>-->
+    <!--<ion-icon name="star"></ion-icon>-->
+    <!--Favorite-->
+    <!--</button>-->
+    <!--<button ion-button icon-left (click)="share(property)" clear item-right>-->
+    <!--<ion-icon name="share"></ion-icon>-->
+    <!--Share-->
+    <!--</button>-->
+    <!--</ion-item>-->
+
+  </ion-card>
+</ion-content>

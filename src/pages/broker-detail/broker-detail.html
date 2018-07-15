@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Speaker</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="broker">
+
+  <ion-card>
+    <ion-card-content>
+      <img src="{{speaker.picture}}"/>
+      <h2>{{speaker.name}}</h2>
+      <!--<h3>{{speaker.title}}</h3>-->
+    </ion-card-content>
+
+    <ion-list>
+      <a ion-item *ngIf="speaker.title">
+        <ion-icon name="person" item-left></ion-icon>
+        <p>Title</p>
+        <h2 text-wrap>{{speaker.title}}</h2>
+      </a>
+      <a ion-item *ngIf="speaker.title">
+        <ion-icon name="ios-contact" item-left></ion-icon>
+        <p>Company</p>
+        <h2 text-wrap>{{speaker.company}}</h2>
+      </a>
+      <a ion-item>
+        <ion-icon name="ios-globe" item-left></ion-icon>
+        <p>Country</p>
+        <h2 text-wrap>{{speaker.country}}</h2>
+      </a>
+      <p class="speakercontent" padding text-wrap>{{speaker.content}}</p>
+    </ion-list>
+  </ion-card>
+
+</ion-content>

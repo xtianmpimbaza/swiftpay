@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Program details</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card *ngIf="item.id">
+    <ion-card-content align-items-center>
+      <ion-item align-self-center><h1 class="card-title">Time : {{item.time}}</h1></ion-item>
+    </ion-card-content>
+    <ion-list>
+      <ion-item *ngIf="item.activity">
+        <ion-icon item-left name="logo-buffer"></ion-icon>
+        <h3>Activity</h3>
+        <ion-note text-wrap>{{item.activity}}</ion-note>
+      </ion-item>
+      <ion-item *ngIf="item.venue">
+        <ion-icon item-left name="ios-home"></ion-icon>
+        <h3>Venue</h3>
+        <ion-note text-wrap>{{item.venue}}</ion-note>
+      </ion-item>
+      <ion-item *ngIf="item.speaker">
+        <ion-icon item-left name="ios-person"></ion-icon>
+        <h3>Speaker</h3>
+        <ion-note text-wrap>{{item.speaker}}</ion-note>
+      </ion-item>
+      <ion-item *ngIf="item.panalist">
+        <ion-icon item-left name="ios-contact"></ion-icon>
+        <h3>Panalists</h3>
+        <ion-note text-wrap>{{item.panalist}}</ion-note>
+      </ion-item>
+
+    </ion-list>
+
+  </ion-card>
+</ion-content>

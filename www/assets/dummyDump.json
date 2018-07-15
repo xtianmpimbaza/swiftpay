@@ -1,0 +1,28 @@
+{
+  "structure": {
+    "tables": {
+      "Schedule": "([id] PRIMARY KEY, [time], [item])"
+    }
+  },
+  "data": {
+    "inserts": {
+      "Artist": [
+        {
+          "id": 1,
+          "time": "9:00",
+          "item": "starting"
+        },
+        {
+          "id": 2,
+          "time": "9:00",
+          "item": "starting"
+        },
+        {
+          "id": 3,
+          "time": "9:00",
+          "item": "starting"
+        }
+      ]
+    }
+  }
+}

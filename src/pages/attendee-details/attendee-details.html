@@ -1,0 +1,44 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Delegate Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="broker">
+
+  <ion-card>
+    <ion-card-content>
+      <!--<img src="{{attendee.picture}}"/>-->
+      <h2>{{attendee.first_name}} {{attendee.last_name}}</h2>
+      <h3>{{attendee.position}}</h3>
+    </ion-card-content>
+
+    <ion-list (click)="sendMail()">
+
+      <a ion-item>
+        <ion-icon name="ios-globe" item-left></ion-icon>
+        <p>Company</p>
+        <h2 text-wrap>{{attendee.company}}</h2>
+      </a>
+      <a ion-item>
+        <ion-icon name="ios-contact" item-left></ion-icon>
+        <p>Position</p>
+        <h2 text-wrap>{{attendee.position}}</h2>
+      </a>
+
+      <a ion-item>
+        <ion-icon name="mail" item-left></ion-icon>
+        <p>Connect</p>
+        <h2>Tap to connect</h2>
+      </a>
+    </ion-list>
+
+  </ion-card>
+
+</ion-content>

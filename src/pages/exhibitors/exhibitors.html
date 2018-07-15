@@ -1,0 +1,24 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-searchbar [(ngModel)]="searchKey" (ionInput)="onInput($event)"
+                   (ionCancel)="onCancel($event)" placeholder="Search for exhibitors" autocomplete="true"></ion-searchbar>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let exhibitor of exhibitors" (click)="openSpeakerDetail(exhibitor)">
+      <ion-avatar item-left>
+        <img src="{{exhibitor.picture}}"/>
+      </ion-avatar>
+      <h2>{{exhibitor.name}}</h2>
+      <!--<p>{{exhibitor.Company}}</p>-->
+    </button>
+  </ion-list>
+</ion-content>

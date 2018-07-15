@@ -1,0 +1,39 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-searchbar [(ngModel)]="searchKey" (ionInput)="getItems($event)"
+                   (ionCancel)="onCancel($event)" placeholder="Search for attendees" autocomplete="true"></ion-searchbar>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let speaker of attendees" (click)="openSpeakerDetail(speaker)">
+      <h2 item-left>
+      <!--<img src="{{speaker.picture}}"/>-->{{speaker.id}}
+      </h2>
+      <h2>{{speaker.first_name}} {{speaker.last_name}}</h2>
+      <p>{{speaker.company}}</p>
+    </button>
+  </ion-list>
+  <!--<ion-list>-->
+
+  <!--<button ion-item *ngFor="let sponsor of sponsors" (click)="send()">-->
+  <!--&lt;!&ndash;<ion-avatar >&ndash;&gt;-->
+  <!--<ion-row class="sponsor_card">-->
+  <!--<img src="{{sponsor.picture}}"/>-->
+  <!--</ion-row>-->
+
+  <!--&lt;!&ndash;</ion-avatar>&ndash;&gt;-->
+  <!--&lt;!&ndash;<h2>{{speaker.name}}</h2>&ndash;&gt;-->
+  <!--&lt;!&ndash;<p>{{speaker.title}}</p>&ndash;&gt;-->
+  <!--</button>-->
+
+  <!--</ion-list>-->
+</ion-content>

@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Pay by merchant</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form #payForm="ngForm" novalidate>
+    <ion-list no-lines>
+      <ion-item>
+        <ion-label stacked color="dark">Merchant code</ion-label>
+        <ion-input [(ngModel)]="pay.merchant" name="merchant" type="number" #merchant="ngModel" spellcheck="false" autocapitalize="off" required>
+        </ion-input>
+      </ion-item>
+      <p [hidden]="merchant.valid || submitted == false" color="danger" padding-left>
+        Merchant code is required
+      </p>
+
+      <ion-item>
+        <ion-label stacked color="dark">Amount (UGX)</ion-label>
+        <ion-input [(ngModel)]="pay.amount" name="amount" type="number" #amount="ngModel" required>
+        </ion-input>
+      </ion-item>
+      <p [hidden]="amount.valid || submitted == false" color="danger" padding-left>
+        Password is required
+      </p>
+    </ion-list>
+
+    <ion-row responsive-sm>
+      <ion-col>
+        <!--<button ion-button (click)="onPay(payForm)" type="submit" block>Login</button>-->
+        <div class="pull-right"><a href="{{onPay()}}"> Pay <i class="ios-arrow-dropright-circle-outline"></i> </a></div>
+        <!--<button (click)="callIT('1-23#456')">call function</button>-->
+      </ion-col>
+      <!--<ion-col>-->
+        <!--<button ion-button (click)="onSignup()" color="light" block>Signup</button>-->
+      <!--</ion-col>-->
+    </ion-row>
+  </form>
+</ion-content>

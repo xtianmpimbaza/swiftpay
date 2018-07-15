@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "442561383111",
+    "firebase_url": "https://abcconference-54977.firebaseio.com",
+    "project_id": "abcconference-54977",
+    "storage_bucket": "abcconference-54977.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:442561383111:android:e2b9af5c5158cb24",
+        "android_client_info": {
+          "package_name": "io.conference.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "442561383111-ufk8v4buei08o2toh6iqlsh3f95ro7c1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVkvc9183Pllr65IqeIhbS2ONYxdLICUI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

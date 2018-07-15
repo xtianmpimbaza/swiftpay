@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <!--<ion-searchbar (ionInput)="getItems($event)" (ionCancel)="onCancel($event)" placeholder="Search for partners" autocomplete="true"></ion-searchbar>-->
+    <ion-searchbar (ionInput)="getItems($event)"
+                   (ionCancel)="onCancel($event)"
+                   placeholder="Search for Partners"
+                   autocomplete="true"></ion-searchbar>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-list padding class="spinnerCenter" *ngIf="checkStatus">
+    <ion-spinner name="crescent"></ion-spinner>
+  </ion-list>
+  <ion-list>
+    <button ion-item *ngFor="let partner of partners" (click)="openSpeakerDetail(speaker)">
+      <ion-avatar item-left>
+        <img src="{{partner.picture}}"/>
+      </ion-avatar>
+      <h2>{{partner.name}}</h2>
+      <!--<p>{{speaker.title}}</p>-->
+    </button>
+  </ion-list>
+
+</ion-content>
+
