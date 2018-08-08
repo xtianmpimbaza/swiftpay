@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {AlertController, NavController, NavParams} from 'ionic-angular';
-import {BrokerService} from '../../providers/broker-service-mock';
+// import {BrokerService} from '../../providers/broker-service-mock';
 import {CallNumber} from "@ionic-native/call-number";
-import {HomePage} from "../home/home";
+// import {HomePage} from "../home/home";
 import {GlobalVars} from "../../providers/global-vars";
 
 @Component({
@@ -14,7 +14,7 @@ export class BrokerDetailPage {
   speaker: any;
   ussdcode : any;
 
-  constructor(public navCtrl: NavController, public global: GlobalVars, public navParams: NavParams, private alertCtrl: AlertController, public service: BrokerService, private callNumber: CallNumber) {
+  constructor(public navCtrl: NavController, public global: GlobalVars, public navParams: NavParams, private alertCtrl: AlertController, private callNumber: CallNumber) {
     this.speaker = this.navParams.data;
   }
 

@@ -4,7 +4,6 @@ import {GlobalVars} from "../../providers/global-vars";
 import {UserProvider} from "../../providers/user/user";
 import {HomePage} from "../home/home";
 import {Storage} from "@ionic/storage";
-import {AttendeesService} from "../../services/attendees-service";
 import {Http} from "@angular/http";
 
 
@@ -21,7 +20,6 @@ export class WelcomePage {
     private user: UserProvider,
     private http: Http,
     private storage: Storage,
-    public service: AttendeesService,
     public loadingCtrl: LoadingController,
     public events: Events) {
 
@@ -39,39 +37,6 @@ export class WelcomePage {
 
   login(email, ticket) {
     this.navCtrl.setRoot(HomePage);
-    // let match = 0;
-    // let loading = this.loadingCtrl.create({
-    //   dismissOnPageChange:true,
-    //   content: 'Signing in.....'
-    // });
-    //
-    // loading.present();
-    //
-    // this.http.get(this.service.url).map(res => res.json()).subscribe(data => {
-    //
-    //     for (let value of data) {
-    //       if (decodeURIComponent(value.email).match(email) && value.ticket.match(ticket)) {
-    //         console.log('match found');
-    //         match = 1;
-    //         this.user.saveUserLog(ticket);
-    //         this.navCtrl.setRoot(HomePage);
-    //         break;
-    //       }
-    //     }
-    //
-    //     if (match === 0) {
-    //       console.log('no match');
-    //       this.global.toast("Invalid user details", "red");
-    //       loading.dismiss().then((data)=>{ }, err=> loading.dismiss());
-    //     }
-    //   },
-    //   err => {
-    //     loading.dismiss().then((data)=>{ }, err=> loading.dismiss());
-    //     this.global.toast("Network error", "red");
-    //     console.log(err);
-    //
-    //   });
-
   }
 
   presentPrompt() {

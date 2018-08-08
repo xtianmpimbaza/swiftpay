@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {IonicPage, NavController} from 'ionic-angular';
 import {BrokerDetailPage} from "../broker-detail/broker-detail";
-import {BrokerService} from "../../providers/broker-service-mock";
 import {SpeakersProvider} from "../../providers/speakers/speakers";
 
 
@@ -16,10 +15,10 @@ export class SpeakersPage implements OnInit {
   merchant_backup: any = [];
   checkStatus = true;
 
-  constructor(public navCtrl: NavController, public service: BrokerService, public speakersProvider: SpeakersProvider) {
+  constructor(public navCtrl: NavController, public speakersProvider: SpeakersProvider) {
     this.checkStatus = true;
     this.getSpeakers();
-    this.getPosts();
+    this.loadMerchants();
   }
 
   ngOnInit(): void {
@@ -53,8 +52,8 @@ export class SpeakersPage implements OnInit {
     this.navCtrl.push(BrokerDetailPage, merchant);
   }
 
-  getPosts() {
-    this.service.getSpeakers().subscribe(data => {
+  loadMerchants() {
+    this.speakersProvider.getSpeakers().subscribe(data => {
         this.speakersProvider.saveSpeakers(data);
         this.merchants = data;
       },

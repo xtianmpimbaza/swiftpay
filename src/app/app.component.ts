@@ -4,19 +4,11 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {Storage} from '@ionic/storage';
 
-import {WelcomePage} from '../pages/welcome/welcome';
 import {AboutPage} from '../pages/about/about';
-import {SpeakersPage} from "../pages/speakers/speakers";
-import {PartnersPage} from "../pages/partners/partners";
-import {ExhibitorsPage} from "../pages/exhibitors/exhibitors";
-import {SponsorsPage} from "../pages/sponsors/sponsors";
-import {SchedulePage} from "../pages/schedule/schedule";
-import {BreakoutPage} from "../pages/breakout/breakout";
 import {HomePage} from "../pages/home/home";
 import {ContactUsPage} from "../pages/contact-us/contact-us";
 import {UserProvider} from "../providers/user/user";
 
-// import {FCM} from "@ionic-native/fcm";
 
 export interface MenuItem {
   title: string;
