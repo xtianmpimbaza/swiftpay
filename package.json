@@ -32,9 +32,9 @@
     "@ionic/storage": "2.0.1",
     "call-number": "^1.0.1",
     "cordova-android": "6.3.0",
+    "cordova-android-support-gradle-release": "^1.4.4",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-email-composer": "^0.8.15",
-    "cordova-plugin-firebase": "^1.0.5",
     "cordova-plugin-inappbrowser": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.1.2",
     "cordova-plugin-ionic-webview": "^1.2.1",
@@ -78,12 +78,14 @@
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-inappbrowser": {},
-      "cordova-plugin-firebase": {},
       "cordova-plugin-email-composer": {},
       "cordova-sqlite-storage": {},
       "uk.co.workingedge.cordova.plugin.sqliteporter": {},
       "cordova-plugin-splashscreen": {},
-      "mx.ferreyra.callnumber": {}
+      "mx.ferreyra.callnumber": {},
+      "cordova-android-support-gradle-release": {
+        "ANDROID_SUPPORT_VERSION": "27.+"
+      }
     },
     "platforms": [
       "android"

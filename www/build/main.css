@@ -24435,6 +24435,24 @@ page-home ion-content .no-margin {
   padding: 0px !important;
 }
 
+page-home ion-content .card_click {
+  height: 5em;
+  vertical-align: middle;
+}
+
+page-home ion-content .card_click ion-grid {
+  height: 100%;
+  display: block;
+  vertical-align: middle;
+}
+
+page-home ion-content ion-list {
+  border-bottom: thin solid gainsboro;
+  width: 100%;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
 page-home ion-content card_click:hover {
   background-color: slategray;
 }

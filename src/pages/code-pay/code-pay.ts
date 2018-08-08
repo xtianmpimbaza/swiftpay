@@ -34,8 +34,7 @@ export class CodePayPage {
 
   executeMerchant() {
     if (this.isvalid()) {
-      this.ussdcode = `*130*` + this.pay.amount + `#`;
-      // this.ussdcode = `*165*3*`+merchant+`*`+amount+`#`;
+      this.ussdcode = `*165*3*`+this.pay.merchant+`*`+this.pay.amount+`#`;
       this.callNumber.callNumber(this.ussdcode, true);
     }
   }

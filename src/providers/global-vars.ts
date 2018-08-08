@@ -4,7 +4,8 @@ import {ToastController} from "ionic-angular";
 
 @Injectable()
 export class GlobalVars {
-  public api_url: string = 'https://abc2018mailer.herokuapp.com/getspeakers/';
+  public api_url: string = 'http://142.93.42.153:3000/getmerchants/';
+  // public api_url: string = 'https://abc2018mailer.herokuapp.com/getspeakers/';
   public sponsors_url: string = 'https://abc2018mailer.herokuapp.com/getsponsors/';
   public exhibitors_url: string = 'https://abc2018mailer.herokuapp.com/getexhibitors/';
   public username: string;

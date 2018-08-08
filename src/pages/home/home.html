@@ -2,7 +2,7 @@
 
   <ion-navbar hideBackButton="true">
     <!--<button ion-button menuToggle>-->
-      <!--<ion-icon name="menu"></ion-icon>-->
+    <!--<ion-icon name="menu"></ion-icon>-->
     <!--</button>-->
     <!--<ion-icon name="ios-home"></ion-icon>-->
     <ion-title>Swiftpay</ion-title>
@@ -11,7 +11,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid class="no-margin no-padding ">
+  <ion-grid class="no-margin no-padding" style="height: 100%; ">
 
     <ion-grid class="no-margin no-padding">
       <ion-row class="center toplinks">
@@ -24,47 +24,71 @@
               </div>
             </ion-col>
           </ion-segment-button>
-          <ion-segment-button value="merchants">
+          <ion-segment-button value="profile">
             <ion-col>
-              <ion-icon name="ios-clipboard-outline"></ion-icon>
+              <ion-icon name="ios-contact-outline"></ion-icon>
+              <div class="icon_title">
+                Profile
+              </div>
+            </ion-col>
+          </ion-segment-button>
+
+          <ion-segment-button value="about">
+            <ion-col>
+              <ion-icon name="ios-information-circle-outline"></ion-icon>
+              <div class="icon_title">
+                About
+              </div>
+            </ion-col>
+          </ion-segment-button>
+          <ion-segment-button value="help">
+            <ion-col>
+              <ion-icon name="ios-help-circle-outline"></ion-icon>
               <div class="icon_title" style="color: white;">
-                Merchants
+                Help
               </div>
 
             </ion-col>
           </ion-segment-button>
-          <ion-segment-button value="promotions">
-            <ion-col>
-              <ion-icon name="ios-cash-outline"></ion-icon>
-              <div class="icon_title">
-                Promotions
-              </div>
-            </ion-col>
-          </ion-segment-button>
+
         </ion-segment>
       </ion-row>
     </ion-grid>
-<!--//effect="coverflow"-->
-    <!--style="background-color: #222222;"-->
-    <div *ngIf="viewMode==='home'" style="width:100%;height:100%;">
-      <ion-row class="no-margin no-padding" >
+
+    <div *ngIf="viewMode==='home'" style="width:100%;height:100%; background-color: #aaaaaa;">
+      <ion-row class="no-margin no-padding">
         <ion-col class="no-margin no-padding">
-          <ion-slides pager options="homeOptions" autoplay="3000" loop="true" speed="7000" >
+          <ion-slides pager options="homeOptions" autoplay="6000" loop="true" speed="2000">
             <ion-slide *ngFor="let slide of slideData">
-              <img src="{{slide.image}}" />
+              <img src="{{slide.image}}"/>
             </ion-slide>
           </ion-slides>
         </ion-col>
       </ion-row>
       <ion-grid>
-        <ion-row>
+        <ion-row style="margin-top: 1em;">
           <ion-col>
             <ion-card style="margin: 0px; width: 100%;" (click)="goToMyPage('CodePayPage')" class="card_click">
               <ion-grid>
                 <ion-row style="width: 100%">
                   <ion-col col-8>
-                    <div class="text_holder">Save codes</div>
-                    <div class="title_holder">Merchant</div>
+                    <div class="text_holder">Payment</div>
+                    <div class="title_holder">Make payment</div>
+                  </ion-col>
+                  <ion-col col-4>
+                    <ion-icon name="ios-card"></ion-icon>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-col>
+          <ion-col>
+            <ion-card style="margin: 0px; width: 100%;" class="card_click" (click)="goToMyPage('SpeakersPage')">
+              <ion-grid>
+                <ion-row style="width: 100%">
+                  <ion-col col-8>
+                    <div class="text_holder">Merchants</div>
+                    <div class="title_holder">Saved Merchants</div>
                   </ion-col>
                   <ion-col col-4>
                     <ion-icon name="ios-bookmarks"></ion-icon>
@@ -73,38 +97,69 @@
               </ion-grid>
             </ion-card>
           </ion-col>
-          <ion-col>
-            <ion-card style="margin: 0px; width: 100%;" class="card_click">
-              <ion-grid>
-                <ion-row style="width: 100%">
-                  <ion-col col-8>
-                    <div class="text_holder">Scan to pay</div>
-                    <div class="title_holder">Payments</div>
-                  </ion-col>
-                  <ion-col col-4>
-                    <ion-icon name="ios-camera"></ion-icon>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-card>
-          </ion-col>
         </ion-row>
       </ion-grid>
     </div>
-    <div *ngIf="viewMode==='merchants'" style="width:100%;height:100%;">
+    <div *ngIf="viewMode==='help'" style="width:100%;height:100%;">
 
       <ion-row>
+        <!--<ion-col>-->
+          <ion-list>
+            <a href="tel:{{+256772121238}}" ion-item>
+              <ion-icon name="call" item-left></ion-icon>
+              <p>Call</p>
+              <h2>+256 (0) 772 121 238</h2>
+            </a>
+          </ion-list>
+
+          <ion-list>
+            <a href="tel:{{+256706087711}}" ion-item>
+              <ion-icon name="call" item-left></ion-icon>
+              <p>Call</p>
+              <h2>+256 (0) 705 270 204</h2>
+            </a>
+          </ion-list>
+          <ion-list>
+            <a href="mailto:{{'gonzawilliams@gmail.com'}}" ion-item>
+              <ion-icon name="mail" item-left></ion-icon>
+              <p>Email</p>
+              <h2>Send us email</h2>
+            </a>
+          </ion-list>
+
+        <!--</ion-col>-->
+      </ion-row>
+    </div>
+    <div *ngIf="viewMode==='profile'" style="width:100%;height:100%;">
+      <ion-row>
         <ion-col>
-          <h1>Saved merchants</h1>
+
 
         </ion-col>
       </ion-row>
     </div>
-    <div *ngIf="viewMode==='promotions'" style="width:100%;height:100%;">
+    <div *ngIf="viewMode==='about'" style="width:100%;height:100%;">
       <ion-row>
         <ion-col>
-          <h2>Promotions</h2>
+          <!--<h2>About</h2>-->
+          <div class="about-header">
+            <img src="assets/img/logo.jpg">
+          </div>
 
+          <div padding class="about-info">
+
+            <h2>About the app</h2>
+            <div class="justify_p">
+              <p style="text-align: justify"> This App is meant to ease payments using merchant codes by just scanning
+                qr code
+                of the business you want to pay.
+                If the business has no QR code, dont worry. Just input it once and next time you want to pay you will
+                find the
+                code already saved in merchants section. Just select it and pay
+              </p>
+
+            </div>
+          </div>
         </ion-col>
       </ion-row>
     </div>

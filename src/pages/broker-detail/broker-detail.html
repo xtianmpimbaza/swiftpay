@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Speaker</ion-title>
+    <ion-title>Merchant Details</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -8,28 +8,36 @@
 
   <ion-card>
     <ion-card-content>
-      <img src="{{speaker.picture}}"/>
-      <h2>{{speaker.name}}</h2>
+      <!--<img src="{{speaker.picture}}"/>-->
+      <h2>{{speaker.merchant_name}}</h2>
+      <!--<h2>{{speaker.m_business_name}}</h2>-->
       <!--<h3>{{speaker.title}}</h3>-->
     </ion-card-content>
 
     <ion-list>
-      <a ion-item *ngIf="speaker.title">
+      <a ion-item>
         <ion-icon name="person" item-left></ion-icon>
-        <p>Title</p>
-        <h2 text-wrap>{{speaker.title}}</h2>
+        <p>Name</p>
+        <h2 text-wrap>{{speaker.merchant_name}}</h2>
+        <!--<h2 text-wrap>{{speaker.m_business_name}}</h2>-->
       </a>
-      <a ion-item *ngIf="speaker.title">
-        <ion-icon name="ios-contact" item-left></ion-icon>
-        <p>Company</p>
-        <h2 text-wrap>{{speaker.company}}</h2>
+      <a ion-item (click)="presentPrompt()">
+        <ion-icon name="ios-barcode-outline" item-left></ion-icon>
+        <p>Merchant Code (Tap to pay)</p>
+        <h2 text-wrap>{{speaker.merchant_code}}</h2>
       </a>
       <a ion-item>
-        <ion-icon name="ios-globe" item-left></ion-icon>
-        <p>Country</p>
-        <h2 text-wrap>{{speaker.country}}</h2>
+        <ion-icon name="ios-pricetags-outline" item-left></ion-icon>
+        <p>Business</p>
+        <h2 text-wrap>{{speaker.m_business_type}}</h2>
       </a>
-      <p class="speakercontent" padding text-wrap>{{speaker.content}}</p>
+      <a ion-item>
+        <ion-icon name="ios-map-outline" item-left></ion-icon>
+        <p>Location</p>
+        <h2 text-wrap>{{speaker.m_location}}</h2>
+      </a>
+
+      <!--<p class="speakercontent" padding text-wrap>{{speaker.content}}</p>-->
     </ion-list>
   </ion-card>
 

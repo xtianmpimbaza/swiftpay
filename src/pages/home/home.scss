@@ -14,6 +14,23 @@ page-home {
     .no-margin {
       padding: 0px !important;
     }
+    .card_click{
+      height: 5em;
+      vertical-align: middle;
+    }
+    .card_click ion-grid {
+      height: 100%;
+      display: block;
+      vertical-align: middle;
+    }
+
+    ion-list{
+      border-bottom: thin solid gainsboro;
+      width: 100%;
+      //text-align: center;
+      margin-left: 1em;
+      margin-right: 1em;
+    }
 
     card_click:hover {
       background-color: slategray;

@@ -12,8 +12,8 @@ import {SpeakersProvider} from "../../providers/speakers/speakers";
 })
 export class SpeakersPage implements OnInit {
 
-  speakers: any = [];
-  speakers_backup: any = [];
+  merchants: any = [];
+  merchant_backup: any = [];
   checkStatus = true;
 
   constructor(public navCtrl: NavController, public service: BrokerService, public speakersProvider: SpeakersProvider) {
@@ -26,38 +26,37 @@ export class SpeakersPage implements OnInit {
   }
 
   getItems(ev) {
-    this.speakers = this.speakers_backup;
+    this.merchants = this.merchant_backup;
     var val = ev.target.value;
 
     if (val && val.trim() != '') {
-      this.speakers = this.speakers.filter((sp) => {
-        return ((sp.name +  ' ' + sp.title + ' ' + sp.company).toLowerCase().indexOf(val.toLowerCase()) > -1);
+      this.merchants = this.merchants.filter((sp) => {
+        return ((sp.merchant_name +  ' ' + sp.merchant_code + ' ' + sp.m_business_type + ' ' + sp.m_location).toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
   }
 
   onCancel(event) {
-    this.speakers = this.speakers_backup;
+    this.merchants = this.merchant_backup;
   }
 
   getSpeakers(){
     this.speakersProvider.getAllSpeakers().then(data => {
-      // if (data.length > 0) {
         this.checkStatus = false;
-      // }
-      this.speakers = data
-      this.speakers_backup = data
+
+      this.merchants = data
+      this.merchant_backup = data
     }).catch(error => console.log(error));
   }
 
-  openSpeakerDetail(broker) {
-    this.navCtrl.push(BrokerDetailPage, broker);
+  openSpeakerDetail(merchant) {
+    this.navCtrl.push(BrokerDetailPage, merchant);
   }
 
   getPosts() {
     this.service.getSpeakers().subscribe(data => {
         this.speakersProvider.saveSpeakers(data);
-        this.speakers = data;
+        this.merchants = data;
       },
       err => {
         console.log(err);

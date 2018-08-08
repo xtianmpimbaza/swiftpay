@@ -1,27 +1,21 @@
 <ion-header>
 
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
     <ion-searchbar (ionInput)="getItems($event)"
-                   (ionCancel)="onCancel($event)" placeholder="Speakers" autocomplete="true"></ion-searchbar>
-    <!--<ion-title>Speakers</ion-title>-->
+                   (ionCancel)="onCancel($event)" placeholder="Search merchant" autocomplete="true"></ion-searchbar>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content>
-  <!--<ion-list padding class="spinnerCenter" *ngIf="checkStatus">-->
-    <!--<ion-spinner name="crescent"></ion-spinner>-->
-  <!--</ion-list>-->
   <ion-list>
-    <button ion-item *ngFor="let speaker of speakers" (click)="openSpeakerDetail(speaker)">
-      <ion-avatar item-left>
-        <img src="{{speaker.picture}}"/>
-      </ion-avatar>
-      <h2>{{speaker.name}}</h2>
-      <p>{{speaker.title}} {{speaker.company}}</p>
+    <!--<button ion-item *ngFor="let merchant of merchants" >-->
+    <button ion-item *ngFor="let merchant of merchants" (click)="openSpeakerDetail(merchant)">
+      <!--<ion-avatar item-left>-->
+        <!--<img src="{{speaker.picture}}"/>-->
+      <!--</ion-avatar>-->
+      <h2>{{merchant.merchant_name}}</h2>
+      <p>{{merchant.merchant_code}}</p>
     </button>
   </ion-list>
 

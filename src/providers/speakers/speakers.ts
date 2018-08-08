@@ -30,6 +30,7 @@ export class SpeakersProvider {
 
   getAllSpeakers() {
     return this.storage.get(STORAGE_KEY);
+
   }
 
   getAllSponsors() {

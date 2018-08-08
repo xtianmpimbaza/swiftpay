@@ -10,7 +10,7 @@ import {Storage} from "@ionic/storage";
 })
 export class HomePage {
   viewMode: string = "home";
-  slideData = [{ image: "assets/img/slide1.jpg" },{ image: "assets/img/slide3.jpg" },{ image: "assets/img/slide4.jpg" },{ image: "assets/img/slide5.jpg" }];
+  slideData = [{ image: "assets/img/slide1.jpg" },{ image: "assets/img/slide3.jpg" },{ image: "assets/img/slide2.jpg" }];
   homeOptions = {
     initialSlide: 0,
     loop: true,
@@ -18,8 +18,7 @@ export class HomePage {
     autoplayDisableOnInteraction: false
   };
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
   }
 
   onPromoSlideChanged() {
