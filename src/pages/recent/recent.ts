@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import {SpeakersProvider} from "../../providers/speakers/speakers";
 import {BrokerDetailPage} from "../broker-detail/broker-detail";
 
@@ -21,52 +21,42 @@ export class RecentPage {
 
   merchants: any = [];
   merchant_backup: any = [];
-  checkStatus = true;
+  // checkStatus = true;
 
   constructor(public navCtrl: NavController, public speakersProvider: SpeakersProvider) {
-    this.checkStatus = true;
-    this.getSpeakers();
-    this.loadMerchants();
+    // this.saveRecent("new merchant");
+    this.getRecentMerchs();
   }
 
   ngOnInit(): void {
   }
 
-  getItems(ev) {
-    this.merchants = this.merchant_backup;
-    var val = ev.target.value;
-
-    if (val && val.trim() != '') {
-      this.merchants = this.merchants.filter((sp) => {
-        return ((sp.merchant_name +  ' ' + sp.merchant_code + ' ' + sp.m_business_type + ' ' + sp.m_location).toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
-    }
+  saveRecent(merchant){
+    return this.speakersProvider.saveLocalMerchants(merchant);
   }
 
-  onCancel(event) {
-    this.merchants = this.merchant_backup;
-  }
+  getRecentMerchs(){
+    this.speakersProvider.getRecentMerchants().then(data => {
+      // this.checkStatus = false;
+      if(data != null){
+        // this.merchants.push(data);
+        this.merchants = data;
+      }
 
-  getSpeakers(){
-    this.speakersProvider.getAllSpeakers().then(data => {
-      this.checkStatus = false;
-
-      this.merchants = data
-      this.merchant_backup = data
+      // this.merchants.push(data);
+      console.log(data);
+      console.log(this.merchants);
+      // this.merchant_backup = data
     }).catch(error => console.log(error));
   }
 
   openSpeakerDetail(merchant) {
     this.navCtrl.push(BrokerDetailPage, merchant);
+
   }
 
-  loadMerchants() {
-    this.speakersProvider.getSpeakers().subscribe(data => {
-        this.speakersProvider.saveLocalMerchants(data);
-        this.merchants = data;
-      },
-      err => {
-        console.log(err);
-      });
+  goback() {
+    this.navCtrl.pop();
+    console.log('Click on button Test Console Log');
   }
 }

@@ -30,7 +30,7 @@ export class SpeakersPage implements OnInit {
 
     if (val && val.trim() != '') {
       this.merchants = this.merchants.filter((sp) => {
-        return ((sp.merchant_name +  ' ' + sp.merchant_code + ' ' + sp.m_business_type + ' ' + sp.m_location).toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return ((sp.merchant_name + ' ' + sp.merchant_code + ' ' + sp.m_business_type + ' ' + sp.m_location).toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
   }
@@ -39,12 +39,12 @@ export class SpeakersPage implements OnInit {
     this.merchants = this.merchant_backup;
   }
 
-  getSpeakers(){
+  getSpeakers() {
     this.speakersProvider.getAllSpeakers().then(data => {
-        this.checkStatus = false;
-
-      this.merchants = data
-      this.merchant_backup = data
+      this.checkStatus = false;
+      this.merchants = data;
+      this.merchant_backup = data;
+      // console.log(data);
     }).catch(error => console.log(error));
   }
 

@@ -6,7 +6,7 @@ import {GlobalVars} from "../global-vars";
 
 const STORAGE_KEY = 'speakers';
 const SPONSORS_KEY = 'sponsors';
-const RECENT_KEY = 'sponsors';
+const RECENT_KEY = 'recent_merchants';
 
 
 @Injectable()
@@ -18,13 +18,6 @@ export class SpeakersProvider {
 
   saveSpeakers(speakers) {
     return this.storage.set(STORAGE_KEY, speakers).then(data => {
-    }, err => {
-      console.log(err);
-    });
-  }
-
-  saveLocalMerchants(merchants) {
-    return this.storage.set(RECENT_KEY, merchants).then(data => {
     }, err => {
       console.log(err);
     });
@@ -44,6 +37,18 @@ export class SpeakersProvider {
   getAllSpeakers() {
     return this.storage.get(STORAGE_KEY);
 
+  }
+
+  getRecentMerchants() {
+    return this.storage.get(RECENT_KEY);
+  }
+
+  saveLocalMerchants(merchants) {
+    return this.storage.set(RECENT_KEY, merchants).then(data => {
+      // console.log(data);
+    }, err => {
+      console.log(err);
+    });
   }
 
   getAllSponsors() {

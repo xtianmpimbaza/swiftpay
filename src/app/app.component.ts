@@ -97,7 +97,7 @@ export class MyApp {
 
   hasLoggedIn(): Promise<boolean> {
     return this.storage.get('login_key').then((value) => {
-      console.log('Is reached');
+      // console.log('Is reached');
       return value === true;
     });
   };

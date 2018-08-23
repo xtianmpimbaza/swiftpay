@@ -10,7 +10,7 @@ import {Storage} from "@ionic/storage";
 })
 export class HomePage {
   viewMode: string = "home";
-  slideData = [{ image: "assets/img/slide1.jpg" },{ image: "assets/img/slide3.jpg" },{ image: "assets/img/slide2.jpg" }];
+  slideData = [{ image: "assets/img/slider5.jpg" },{ image: "assets/img/slide6.jpg" },{ image: "assets/img/slide7.jpg" },{ image: "assets/img/slide8.jpg" }];
   homeOptions = {
     initialSlide: 0,
     loop: true,
