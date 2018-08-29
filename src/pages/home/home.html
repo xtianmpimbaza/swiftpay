@@ -59,7 +59,7 @@
       <ion-row class="no-margin no-padding">
         <ion-col class="no-margin no-padding">
           <ion-slides pager options="homeOptions" autoplay="6000" loop="true" speed="2000">
-            <ion-slide *ngFor="let slide of slideData">
+            <ion-slide *ngFor="let slide of slideData" (click)="openSpeakerDetail(slide)">
               <img src="{{slide.image}}"/>
             </ion-slide>
           </ion-slides>
@@ -109,6 +109,21 @@
                   </ion-col>
                   <ion-col col-4>
                     <ion-icon name="md-cloud-upload"></ion-icon>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-col>
+          <ion-col>
+            <ion-card style="margin: 0px; width: 100%;" class="card_click" (click)="goToMyPage('PromotionsPage')">
+              <ion-grid>
+                <ion-row style="width: 100%">
+                  <ion-col col-8>
+                    <div class="text_holder">Promotions</div>
+                    <div class="title_holder">Custom codes</div>
+                  </ion-col>
+                  <ion-col col-4>
+                    <ion-icon name="ios-card"></ion-icon>
                   </ion-col>
                 </ion-row>
               </ion-grid>

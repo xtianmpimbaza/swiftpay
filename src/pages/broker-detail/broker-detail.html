@@ -15,10 +15,15 @@
     </ion-card-content>
 
     <ion-list>
-      <a ion-item>
-        <ion-icon name="person" item-left></ion-icon>
-        <p>Name</p>
-        <h2 text-wrap>{{speaker.merchant_name}}</h2>
+      <a ion-item *ngIf="speaker.image != null">
+        <!--<ion-icon name="person" item-left></ion-icon>-->
+        <ion-item style="padding: 0; margin: 0;">
+          <!--<ion-avatar item-left>-->
+          <img src="{{speaker.image}}" style="width: 100%"/>
+          <!--</ion-avatar>-->
+        </ion-item>
+        <!--<p>Name</p>-->
+        <!--<h2 text-wrap>{{speaker.merchant_name}}</h2>-->
         <!--<h2 text-wrap>{{speaker.m_business_name}}</h2>-->
       </a>
       <a ion-item (click)="presentPrompt()">
@@ -35,6 +40,11 @@
         <ion-icon name="ios-map-outline" item-left></ion-icon>
         <p>Location</p>
         <h2 text-wrap>{{speaker.m_location}}</h2>
+      </a>
+      <a href="tel:{{speaker.contact}}" ion-item *ngIf="speaker.contact != null">
+        <ion-icon name="ios-map-outline" item-left></ion-icon>
+        <p>Contact</p>
+        <h2 text-wrap>{{speaker.contact}}</h2>
       </a>
 
       <!--<p class="speakercontent" padding text-wrap>{{speaker.content}}</p>-->
