@@ -1,0 +1,46 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Receive</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<h2>Receive {{coin}}</h2>
+  <!--Amount (UGX) :-->
+
+  <form #payForm="ngForm" novalidate>
+    <!--<ion-list no-lines>-->
+    <ion-grid>
+      <ion-row>
+        <ion-col col-10>
+          <ion-item>
+            <!--<ion-label stacked color="dark">Amount (UGX)</ion-label>-->
+            <ion-input [(ngModel)]="pay.amount" name="amount" type="number" #amount="ngModel" placeholder="Amount (UGX)" required>
+            </ion-input>
+          </ion-item>
+          <!--<p [hidden]="amount.valid || submitted == false" color="danger" padding-left>-->
+            <!--Amount is required-->
+          <!--</p>-->
+        </ion-col>
+        <ion-col col-2>
+          <button ion-button (click)="acceptDeposit()" type="submit" block> <ion-icon name="send"></ion-icon></button>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+
+    <!--</ion-list>-->
+
+    <!--<ion-row responsive-sm>-->
+      <!--<ion-col>-->
+        <!--<button ion-button (click)="executeMerchant()" type="submit" block>Get Qr</button>-->
+      <!--</ion-col>-->
+
+    <!--</ion-row>-->
+  </form>
+
+
+</ion-content>

@@ -1,190 +1,95 @@
 <ion-header>
 
   <ion-navbar hideBackButton="true">
-    <!--<button ion-button menuToggle>-->
-    <!--<ion-icon name="menu"></ion-icon>-->
-    <!--</button>-->
-    <!--<ion-icon name="ios-home"></ion-icon>-->
-    <ion-title>Swiftpay</ion-title>
+    <ion-title>Binusu</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content>
-  <ion-grid class="no-margin no-padding" style="height: 100%; ">
-
-    <ion-grid class="no-margin no-padding">
-      <ion-row class="center toplinks">
-        <ion-segment [(ngModel)]="viewMode" color="secondary">
-          <ion-segment-button value="home">
-            <ion-col>
-              <ion-icon name="ios-home-outline"></ion-icon>
-              <div class="icon_title">
-                Home
-              </div>
-            </ion-col>
-          </ion-segment-button>
-          <ion-segment-button value="profile">
-            <ion-col>
-              <ion-icon name="ios-contact-outline"></ion-icon>
-              <div class="icon_title">
-                Profile
-              </div>
-            </ion-col>
-          </ion-segment-button>
-
-          <ion-segment-button value="about">
-            <ion-col>
-              <ion-icon name="ios-information-circle-outline"></ion-icon>
-              <div class="icon_title">
-                About
-              </div>
-            </ion-col>
-          </ion-segment-button>
-          <ion-segment-button value="help">
-            <ion-col>
-              <ion-icon name="ios-help-circle-outline"></ion-icon>
-              <div class="icon_title" style="color: white;">
-                Help
-              </div>
-
-            </ion-col>
-          </ion-segment-button>
-
-        </ion-segment>
-      </ion-row>
-    </ion-grid>
-
-    <div *ngIf="viewMode==='home'" style="width:100%;height:100%; background-color: #aaaaaa;">
-      <ion-row class="no-margin no-padding">
-        <ion-col class="no-margin no-padding">
-          <ion-slides pager options="homeOptions" autoplay="6000" loop="true" speed="2000">
-            <ion-slide *ngFor="let slide of slideData" (click)="openSpeakerDetail(slide)">
-              <img src="{{slide.image}}"/>
-            </ion-slide>
-          </ion-slides>
-        </ion-col>
-      </ion-row>
-      <ion-grid>
-        <ion-row style="margin-top: 1em;">
-          <ion-col>
-            <ion-card style="margin: 0px; width: 100%;" (click)="goToMyPage('CodePayPage')" class="card_click">
-              <ion-grid>
-                <ion-row style="width: 100%">
-                  <ion-col col-8>
-                    <div class="text_holder">Payment</div>
-                    <div class="title_holder">Make payment</div>
-                  </ion-col>
-                  <ion-col col-4>
-                    <ion-icon name="ios-card"></ion-icon>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-card>
-          </ion-col>
-          <ion-col>
-            <ion-card style="margin: 0px; width: 100%;" class="card_click" (click)="goToMyPage('SpeakersPage')">
-              <ion-grid>
-                <ion-row style="width: 100%">
-                  <ion-col col-8>
-                    <div class="text_holder">Merchants</div>
-                    <div class="title_holder">Saved Merchants</div>
-                  </ion-col>
-                  <ion-col col-4>
-                    <ion-icon name="ios-bookmarks"></ion-icon>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-card>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-card style="margin: 0px; width: 100%;" class="card_click" (click)="goToMyPage('RecentPage')">
-              <ion-grid>
-                <ion-row style="width: 100%">
-                  <ion-col col-8>
-                    <div class="text_holder">Recent Merchants</div>
-                    <div class="title_holder">Custom codes</div>
-                  </ion-col>
-                  <ion-col col-4>
-                    <ion-icon name="md-cloud-upload"></ion-icon>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-card>
-          </ion-col>
-          <ion-col>
-            <ion-card style="margin: 0px; width: 100%;" class="card_click" (click)="goToMyPage('PromotionsPage')">
-              <ion-grid>
-                <ion-row style="width: 100%">
-                  <ion-col col-8>
-                    <div class="text_holder">Promotions</div>
-                    <div class="title_holder">Custom codes</div>
-                  </ion-col>
-                  <ion-col col-4>
-                    <ion-icon name="ios-card"></ion-icon>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-card>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </div>
-    <div *ngIf="viewMode==='help'" style="width:100%;height:100%;">
-
-      <ion-row>
-        <!--<ion-col>-->
-          <ion-list>
-            <a href="tel:{{+256772121238}}" ion-item>
-              <ion-icon name="call" item-left></ion-icon>
-              <p>Call</p>
-              <h2>+256 (0) 772 121 238</h2>
-            </a>
-          </ion-list>
-          <ion-list>
-            <a href="tel:{{+256706087711}}" ion-item>
-              <ion-icon name="call" item-left></ion-icon>
-              <p>Call</p>
-              <h2>+256 (0) 705 270 204</h2>
-            </a>
-          </ion-list>
-          <ion-list>
-            <a href="mailto:{{'gonzawilliams@gmail.com'}}" ion-item>
-              <ion-icon name="mail" item-left></ion-icon>
-              <p>Email</p>
-              <h2>Send us email</h2>
-            </a>
-          </ion-list>
-        <!--</ion-col>-->
-      </ion-row>
-    </div>
-    <div *ngIf="viewMode==='profile'" style="width:100%;height:100%;">
+  <ion-grid class="no-margin no-padding">
+    <div style="width:100%;">
       <ion-row>
         <ion-col>
-
-        </ion-col>
-      </ion-row>
-    </div>
-    <div *ngIf="viewMode==='about'" style="width:100%;height:100%;">
-      <ion-row>
-        <ion-col>
-          <!--<h2>About</h2>-->
-          <div class="about-header">
-            <img src="assets/img/logo2.jpg">
-          </div>
 
           <div padding class="about-info">
-            <h2>About the app</h2>
+            <h2>Exchange Rates</h2>
             <div class="justify_p">
               <p style="text-align: justify">
-                SWIFTPAY is your safe and most convenient way to make payments to any Momo Pay merchant.<br>
-                Powered by MTN
+                Binuusu paymeny app allows you to get paid by your customers using cryptocurrency.
               </p>
             </div>
           </div>
         </ion-col>
+      </ion-row>
+    </div>
+    <div style="width:100%;">
+
+      <ion-row>
+        <!--<ion-col>-->
+        <ion-list>
+          <a href="#" ion-item>
+            <ion-avatar item-left>
+              <img src="assets/img/bitcoin-logo.png"/>
+            </ion-avatar>
+            <p>Bitcoin</p>
+            <!--<h2>  ugx</h2>-->
+            <h2> {{ bitcoinSell | number:'.2' }} ugx</h2>
+            <ion-icon name="card" item-right (click)="openReceive('bitcoin')"></ion-icon>
+          </a>
+        </ion-list>
+        <ion-list>
+          <a href="#" ion-item>
+            <ion-icon name="logo-bitcoin" item-left></ion-icon>
+            <p>Binusu</p>
+            <h2> {{ binusuSell | number:'.2' }} ugx</h2>
+            <ion-icon name="card" item-right (click)="openReceive('binusu')"></ion-icon>
+          </a>
+        </ion-list>
+        <ion-list>
+          <a href="#" ion-item>
+            <ion-avatar item-left>
+              <img src="assets/img/ethereum-icon.png"/>
+            </ion-avatar>
+            <p>Ethereum</p>
+            <h2> {{ etherSell | number:'.2' }} ugx</h2>
+            <ion-icon name="card" item-right (click)="openReceive('ethereum')"></ion-icon>
+          </a>
+        </ion-list>
+        <ion-list>
+          <a href="#" ion-item>
+            <ion-avatar item-left>
+              <img src="assets/img/litecoin-icon.png"/>
+            </ion-avatar>
+            <p>Litecoin</p>
+            <h2> {{ litecoinSell | number:'.2' }} ugx</h2>
+            <ion-icon name="card" item-right (click)="openReceive('litecoin')"></ion-icon>
+          </a>
+        </ion-list>
+        <ion-list>
+          <a href="#" ion-item>
+            <ion-avatar item-left>
+              <img src="assets/img/xrp-icon.png"/>
+            </ion-avatar>
+            <p>XRP</p>
+            <h2> {{ bitcoinSell | number:'.2' }} ugx</h2>
+            <ion-icon name="card" item-right (click)="openReceive('xrp')"></ion-icon>
+          </a>
+        </ion-list>
+        <ion-list>
+          <a href="#" ion-item>
+            <ion-avatar item-left>
+              <img src="assets/img/stellar-icon.png"/>
+            </ion-avatar>
+            <p>Stellar</p>
+            <h2> {{ bitcoinSell | number:'.2' }} ugx</h2>
+            <ion-icon name="card" item-right (click)="openReceive('stellar')"></ion-icon>
+          </a>
+        </ion-list>
+      </ion-row>
+    </div>
+    <div style="width:100%;">
+      <ion-row>
       </ion-row>
     </div>
   </ion-grid>

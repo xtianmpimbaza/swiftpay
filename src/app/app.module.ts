@@ -22,6 +22,11 @@ import { SQLite } from '@ionic-native/sqlite';
 import {UserProvider} from "../providers/user/user";
 import { SpeakersProvider } from '../providers/speakers/speakers';
 import {CallNumber} from "@ionic-native/call-number";
+import {TabsPage} from "../pages/tabs/tabs";
+import {ReceivePage} from "../pages/receive/receive";
+import {SendPage} from "../pages/send/send";
+import {AccountPage} from "../pages/account/account";
+import { BinusuProvider } from '../providers/binusu/binusu';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,11 @@ import {CallNumber} from "@ionic-native/call-number";
     // PropertyDetailPage,
     BrokerDetailPage,
     WelcomePage,
-    AboutPage
+    AboutPage,
+    TabsPage,
+    SendPage,
+    ReceivePage,
+    AccountPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +56,11 @@ import {CallNumber} from "@ionic-native/call-number";
     WelcomePage,
     BrokerDetailPage,
     WelcomePage,
-    AboutPage
+    AboutPage,
+    TabsPage,
+    SendPage,
+    ReceivePage,
+    AccountPage
   ],
   providers: [
     StatusBar,
@@ -59,6 +72,7 @@ import {CallNumber} from "@ionic-native/call-number";
     SQLitePorter,
     SQLite,
     CallNumber,
+    BinusuProvider,
     // FCM,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

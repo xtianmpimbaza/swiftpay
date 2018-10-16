@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Storage} from "@ionic/storage";
-import {BrokerDetailPage} from "../broker-detail/broker-detail";
+import {ReceivePage} from "../receive/receive";
+import {BinusuProvider} from "../../providers/binusu/binusu";
 
 
 @IonicPage()
@@ -10,39 +11,35 @@ import {BrokerDetailPage} from "../broker-detail/broker-detail";
   templateUrl: 'home.html',
 })
 export class HomePage {
-  viewMode: string = "home";
-  slideData = [
-    { image: "assets/img/slider5.jpg", merchant_name: "KFC", merchant_code: "12345", m_business_type: "Restaurant", m_location: "Lugogo", contact: "0312532532"},
-    { image: "assets/img/slide6.jpg", merchant_name: "MTN", merchant_code: "12345", m_business_type: "Telcom", m_location: "Shoprite", contact: "123"},
-    { image: "assets/img/slide7.jpg", merchant_name: "TAG TEAM", merchant_code: "12345", m_business_type: "Pizza", m_location: "Lugogo", contact: "0800273030"},
-    { image: "assets/img/slide8.jpg", merchant_name: "Plater", merchant_code: "12345", m_business_type: "Motel", m_location: "Lugogo", contact: "256706111110"}
-    ];
-  homeOptions = {
-    initialSlide: 0,
-    loop: true,
-    autoplay:2000,
-    autoplayDisableOnInteraction: false
-  };
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
+  rates: any = [];
+  bitcoinSell: any = 0;
+  binusuSell: any = 0;
+  litecoinSell: any = 0;
+  etherSell: any = 0;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, public binusuProvider: BinusuProvider) {
+    this.loadMerchants();
   }
 
-  onPromoSlideChanged() {
-    // alert('ABC');
-    // this.promoSlider.options = this.homeOptions;
-    // this.promoSlider.rapidUpdate();
-    //What should i do in this method?
-
-  };
-  openSpeakerDetail(merchant) {
-    this.navCtrl.push(BrokerDetailPage, merchant);
+  loadMerchants() {
+    this.binusuProvider.getRates().subscribe(data => {
+        this.rates = data;
+        this.bitcoinSell = data[0].Sell;
+        this.binusuSell = data[1].Sell;
+        this.etherSell = data[2].Sell;
+        this.litecoinSell = data[3].Sell;
+        console.log(this.bitcoinSell);
+      },
+      err => {
+        console.log(err);
+      });
   }
+
+  openReceive(coin) {
+    this.navCtrl.push(ReceivePage, coin);
+  }
+
   goToMyPage(page:string) {
-    // go to the MyPage component
     this.navCtrl.push(page);
-
   }
-
-
 
 }

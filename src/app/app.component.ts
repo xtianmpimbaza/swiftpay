@@ -8,6 +8,7 @@ import {AboutPage} from '../pages/about/about';
 import {HomePage} from "../pages/home/home";
 import {ContactUsPage} from "../pages/contact-us/contact-us";
 import {UserProvider} from "../providers/user/user";
+import {TabsPage} from "../pages/tabs/tabs";
 
 
 export interface MenuItem {
@@ -24,7 +25,7 @@ export class MyApp {
 
   helpMenuItems: Array<MenuItem>;
 
-  rootPage: any;
+  rootPage:any = TabsPage;
 
 
   loggedInPages: MenuItem[] = [
@@ -66,18 +67,18 @@ export class MyApp {
       {title: 'Contact us', component: ContactUsPage, icon: 'ios-text'}
     ];
 
-    storage.get('login_key').then((logged) => {
-      if (logged) {
-        this.enableMenu(true);
-        this.rootPage = HomePage;
-        // this.nav.setRoot(HomePage);
-      } else {
-        this.enableMenu(false);
-        this.rootPage = HomePage;
-        // this.rootPage = WelcomePage;
-      }
-      this.platformReady()
-    });
+    // storage.get('login_key').then((logged) => {
+    //   if (logged) {
+    //     this.enableMenu(true);
+    //     this.rootPage = HomePage;
+    //     // this.nav.setRoot(HomePage);
+    //   } else {
+    //     this.enableMenu(false);
+    //     this.rootPage = HomePage;
+    //     // this.rootPage = WelcomePage;
+    //   }
+    //   this.platformReady()
+    // });
 
 
   }
